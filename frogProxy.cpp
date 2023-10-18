@@ -38,7 +38,6 @@ int main() {
     } 
 
     //listen for connections
-
     if (listen(listenSocket, 3) < 0) {
         perror("Listen failed");
         exit(EXIT_FAILURE);
@@ -61,9 +60,9 @@ int main() {
         char buffer[4096] = {0}; //buffer to store the HTTP requests
         recv(commSocket, buffer, sizeof(buffer), 0); //receive the request using the socket, and store in buffer
 
-        cout << buffer << endl;
+        cout << buffer;
         counter++;
-        cout << "Count: " << counter << endl << endl;
+        cout << "Count: " << counter << endl;
         //received HTTP request from browser, now need to send this to the server and receive a response which I need to send back to the browser
 
         //need to read the GET message to get the host name
@@ -184,7 +183,7 @@ int main() {
             }
             close(commSocket); //close the socket for communication with browser
             close(serverSocket); //close socket for communication with server
-            cout << "Connection closed" << endl;
+            cout << "Connection closed" << endl << endl;
         } //end of GET conditional
 
     } //end of while loop
